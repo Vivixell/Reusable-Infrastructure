@@ -58,3 +58,9 @@ variable "server_ports" {
     }
   }
 }
+
+variable "custom_tags" {
+  description = "Additional custom tags to apply to all resources (to test module tags)"
+  type        = map(string)
+  default     = {} # Defaults to empty so it doesn't break if callers don't provide it
+}

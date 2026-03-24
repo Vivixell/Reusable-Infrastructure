@@ -8,9 +8,12 @@ resource "aws_vpc" "this" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
 
-  tags = {
-    Name = "${var.cluster_name}-vpc"
-  }
+tags = merge(
+    { Name = "${var.cluster_name}-vpc" }, #merge is use to combine two or more object into one. 
+    
+    var.custom_tags 
+  )
+
 }
 
 # 2. Public Subnets
